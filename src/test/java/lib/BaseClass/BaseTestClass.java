@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.TestCase;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import pages.BasePage;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -33,7 +35,9 @@ public class BaseTestClass {
         webDriver = startNewDriver();
         webDriver.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS);
         webDriver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+        webDriver.manage().window().setSize(new Dimension(1920, 1080));
         webDriver.get(baseUrl);
+        BasePage page = new BasePage(webDriver);
     }
 
     @AfterClass

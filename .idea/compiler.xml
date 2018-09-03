@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="autotest" />
         <module name="sadom" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="autotest" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
