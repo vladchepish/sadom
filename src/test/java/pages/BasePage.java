@@ -1,6 +1,7 @@
 package pages;
 
 import junit.framework.TestCase;
+import lib.Timeout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
@@ -13,11 +14,15 @@ import java.util.List;
 public class BasePage extends TestCase{
 
     protected WebDriver driver;
-    protected WebDriverWait actionWait;
+    protected WebDriverWait loadingWait;
     protected WebDriverWait shortWait;
+    protected WebDriverWait actionWait;
+    protected WebDriverWait betWait;
+    protected WebDriverWait defaultWait;
     /** Upper menu */
     protected static final By logoImg = By.cssSelector("img[itemprop='logo']");
     protected static final By searchInput = By.cssSelector("input.search_input");
+    protected static final By searchSubmitBtn = By.cssSelector("button.b-search__submit");
     protected static final By wishListLink = By.cssSelector("a.js-go-to-whishlist");
     protected static final By cart = By.cssSelector("a.b-cart");
     protected static final By enterLink = By.cssSelector("a.b-top-bar__sign-in");
@@ -25,10 +30,13 @@ public class BasePage extends TestCase{
     /** Pages */
     protected static final By pageTitle = By.cssSelector("h1.b-page__title");
 
-
-
-    public BasePage(WebDriver driver){
+    public BasePage(WebDriver driver) {
         this.driver = driver;
+        this.shortWait = new WebDriverWait(driver, Timeout.shortTimeout);
+        this.defaultWait = new WebDriverWait(driver, Timeout.defaultTimeout);
+        this.actionWait = new WebDriverWait(driver, Timeout.action);
+        this.loadingWait = new WebDriverWait(driver, Timeout.loading);
+        this.betWait = new WebDriverWait(driver, Timeout.betTimeout);
     }
 
     public WebElement getElement(By by){
@@ -62,5 +70,11 @@ public class BasePage extends TestCase{
         } catch (Exception e){
             return false;
         }
+    }
+
+    protected void findElementAndTypeText(By by, String text){
+        getElement(by).click();
+        getElement(by).clear();
+        getElement(by).sendKeys(text);
     }
 }

@@ -15,4 +15,13 @@ public class MainPage extends BasePage {
 
         return new AutorizationPage(driver);
     }
+
+    public GoodsListPage goodsListPage(){
+        return new GoodsListPage(driver);
+    }
+
+    public void searchingGoodByName(String text) {
+        findElementAndTypeText(searchInput, text);
+        click(searchSubmitBtn);
+    }
 }

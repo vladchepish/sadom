@@ -1,6 +1,6 @@
 package lib;
 
-public class Timout {
+public class Timeout {
 
     public static final long loading = 40L;
     public static final long long_loading = 120L;
