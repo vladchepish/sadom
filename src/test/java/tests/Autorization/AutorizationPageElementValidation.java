@@ -1,4 +1,4 @@
-package tests.autorization;
+package tests.Autorization;
 
 import lib.BaseClass.BaseTestClass;
 import org.junit.BeforeClass;

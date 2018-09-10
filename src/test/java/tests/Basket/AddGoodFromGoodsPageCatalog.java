@@ -1,13 +1,10 @@
 package tests.Basket;
 
 import lib.BaseClass.BaseTestClass;
-import lib.obj.Good;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import pages.GoodsListPage;
 import pages.MainPage;
-
-import java.util.List;
 
 /**
  * Логика теста заключается в том, что тест идёт на главную страницу,
@@ -24,7 +21,8 @@ import java.util.List;
  * Снова открывает корзину - проверяет информацию о товаре в поп-апе
  */
 
-public class AddGoodFromGoodsPageKatalog extends BaseTestClass {
+
+public class AddGoodFromGoodsPageCatalog extends BaseTestClass{
 
     private static MainPage mainPage;
     private static GoodsListPage goodsPage;
@@ -39,6 +37,7 @@ public class AddGoodFromGoodsPageKatalog extends BaseTestClass {
         mainPage.searchingGoodByName("Плойка");
         goodsPage = mainPage.goodsListPage();
         goodsPage.openFirstGoodFromList();
-
     }
+
+
 }
